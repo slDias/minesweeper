@@ -50,12 +50,12 @@ const GamePlatform = () => {
     }}>
       <Paper elevation={3} sx={{ padding: 2 }}>
         <Grid container sx={{ alignItems: 'center', mb: 2}}>
-          <Grid item flexGrow={1} sx={{ verticalAlign: 'center' }}>
+          <Grid flexGrow={1} sx={{ verticalAlign: 'center' }}>
             <Typography variant="h5" component="div" align="center">
               {gameStatus}
             </Typography>
           </Grid>
-          <Grid item>
+          <Grid>
             <IconButton onClick={() => dispatch(resetGame())} component="span">
               <ReplaySharpIcon />
             </IconButton>

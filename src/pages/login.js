@@ -19,7 +19,7 @@ const Login = () => {
   const { isLoading, error } = useSelector(authSelector)
 
   const loading = <Grid container direction="column" sx={{ padding: 4, alignItems: 'center' }}>
-    <Grid item>
+    <Grid>
       <CircularProgress />
     </Grid>
   </Grid>
@@ -30,14 +30,14 @@ const Login = () => {
   const handlePasswordChanged = e => setPayload({ ...payload, password: e.target.value })
 
   const loginForm = <Grid container direction="column" sx={{ gap: 2 }}>
-    <Grid item>
+    <Grid>
       <h2 align="center">Minesweeper 💣</h2>
     </Grid>
 
-    <Grid item>
+    <Grid>
       <UserInput value={payload.username} onChange={handleUserChanged} />
     </Grid>
-    <Grid item>
+    <Grid>
       <PasswordInput value={payload.password} onChange={handlePasswordChanged} />
     </Grid>
 
@@ -46,12 +46,12 @@ const Login = () => {
     </Box>
 
     <Grid container sx={{ justifyContent: 'space-between' }}>
-      <Grid item>
+      <Grid>
         <Button onClick={_ => dispatch(register(payload))}>
           Register
         </Button>
       </Grid>
-      <Grid item>
+      <Grid>
         <Button variant="contained" onClick={_ => dispatch(login(payload))}>
           Login
         </Button>

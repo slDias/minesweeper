@@ -1,5 +1,5 @@
 import { Provider } from "react-redux"
-import { render } from "react-dom"
+import { createRoot } from "react-dom/client"
 import { configureStore } from "@reduxjs/toolkit"
 import { combineReducers } from "redux"
 
@@ -14,11 +14,10 @@ const rootReducer = combineReducers({
 })
 
 const store = configureStore({ reducer: rootReducer })
+const root = createRoot(document.getElementById("root"))
 
-const rootElement = (
+root.render(
   <Provider store={store}>
     <App />
   </Provider>
 )
-
-render(rootElement, document.getElementById("root"))
