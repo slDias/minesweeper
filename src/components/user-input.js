@@ -1,10 +1,7 @@
-import { TextField } from "@mui/material";
-import React from "react";
+import { TextField } from "@mui/material"
 
-const UserInput = props => {
-    return (
-        <TextField value={props.value} label="Usuário" onChange={props.onChange} fullWidth></TextField>
-    )
-}
+const UserInput = props => (
+  <TextField value={props.value} label="User" onChange={props.onChange} fullWidth />
+)
 
 export default UserInput

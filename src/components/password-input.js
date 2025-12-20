@@ -1,14 +1,13 @@
-import { TextField } from "@mui/material";
-import React from "react";
+import { TextField } from "@mui/material"
 
-const PasswordInput = props => {
-    return <TextField 
-        value={props.value} 
-        label="Senha" 
-        type="password" 
-        onChange={props.onChange} 
-        fullWidth
-    />
-}
+const PasswordInput = props => (
+  <TextField
+    value={props.value}
+    label="Password"
+    type="password"
+    onChange={props.onChange}
+    fullWidth
+  />
+)
 
 export default PasswordInput
