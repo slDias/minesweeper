@@ -28,14 +28,15 @@ const Login = () => {
   const [payload, setPayload] = useState(initialState)
   const handleUserChanged = e => setPayload({ ...payload, username: e.target.value })
   const handlePasswordChanged = e => setPayload({ ...payload, password: e.target.value })
+  const handleEnterKeyPress = e => e.code === "Enter" && dispatch(login(payload))
 
-  const loginForm = <Grid container direction="column" sx={{ gap: 2 }}>
+  const loginForm = <Grid container direction="column" sx={{ gap: 2 }} onKeyDown={handleEnterKeyPress}>
     <Grid>
       <h2 align="center">Minesweeper 💣</h2>
     </Grid>
 
     <Grid>
-      <UserInput value={payload.username} onChange={handleUserChanged} />
+      <UserInput value={payload.username} onChange={handleUserChanged} focused />
     </Grid>
     <Grid>
       <PasswordInput value={payload.password} onChange={handlePasswordChanged} />

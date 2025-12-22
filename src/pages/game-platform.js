@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { grey } from "@mui/material/colors"
 import ReplaySharpIcon from "@mui/icons-material/ReplaySharp"
+import LogoutIcon from "@mui/icons-material/Logout"
 import {
   Box,
   Grid,
@@ -10,6 +11,7 @@ import {
 } from "@mui/material"
 
 import { boardSelector, resetGame } from "../slice/game"
+import { logout } from "../slice/auth"
 import Tile from "../components/tile"
 import ToolSelector from "../components/tool-selector"
 
@@ -50,6 +52,11 @@ const GamePlatform = () => {
     }}>
       <Paper elevation={3} sx={{ padding: 2 }}>
         <Grid container sx={{ alignItems: 'center', mb: 2}}>
+          <Grid>
+            <IconButton onClick={() => dispatch(logout())}>
+              <LogoutIcon />
+            </IconButton>
+          </Grid>
           <Grid flexGrow={1} sx={{ verticalAlign: 'center' }}>
             <Typography variant="h5" component="div" align="center">
               {gameStatus}

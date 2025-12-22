@@ -25,14 +25,13 @@ export const authSlice = createSlice({
       state.isLoading = false
       state.error = payload
     },
-    logout: state => {
+    logoutOperation: state => {
       state.user = null
-      this.endAuthOperation(state)
     }
   }
 })
 
-export const { startAuthOperation, endAuthOperation, failAuthOperation, logout } = authSlice.actions
+export const { startAuthOperation, endAuthOperation, failAuthOperation, logoutOperation } = authSlice.actions
 
 export function login(payload) {
   return async dispatch => {
@@ -42,7 +41,7 @@ export function login(payload) {
       const user = await api.auth.login(payload)
       dispatch(endAuthOperation(user))
     } catch (error) {
-      dispatch(failAuthOperation(error))
+      dispatch(failAuthOperation(error.message))
     }
   }
 }
@@ -52,11 +51,17 @@ export function register(payload) {
     dispatch(startAuthOperation())
 
     try {
-      const user = await api.auth.register({ name: payload.username, password: payload.password })
+      const user = await api.auth.register(payload)
       dispatch(endAuthOperation(user))
     } catch (error) {
-      dispatch(failAuthOperation(error))
+      dispatch(failAuthOperation(error.message))
     }
+  }
+}
+
+export function logout() {
+  return dispatch => {
+    dispatch(logoutOperation())
   }
 }
 
