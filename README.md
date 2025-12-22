@@ -23,4 +23,4 @@ so I did not had the experience of setting up a react app from the start before 
 
 ## References
 
-This was **done with no specific tutorial** for this application, and to understand Redux, I mostly read it's docs and [this tutorial](https://www.taniarascia.com/redux-react-guide/#redux-toolkit) which writes a "posts" type of app but explains redux's concepts really well.
+This was **done with no specific tutorial** for this application and, to understand Redux, I mostly read it's docs and [this tutorial](https://www.taniarascia.com/redux-react-guide/#redux-toolkit) which writes a "posts" type of app but explains redux's concepts really well.
