@@ -11,7 +11,7 @@ import {
 } from "@mui/material"
 
 import { boardSelector, resetGame } from "../slice/game"
-import { logout } from "../slice/auth"
+import { authSelector, logout } from "../slice/auth"
 import Tile from "../components/tile"
 import ToolSelector from "../components/tool-selector"
 
@@ -19,6 +19,7 @@ import ToolSelector from "../components/tool-selector"
 const GamePlatform = () => {
 
   const { tileBoard, gameStatus, moves } = useSelector(boardSelector)
+  const { user } = useSelector(authSelector)
   const dispatch = useDispatch()
 
   const GameBoard = () => (
@@ -69,7 +70,21 @@ const GamePlatform = () => {
           </Grid>
         </Grid>
 
-        <ToolSelector />
+        <Grid container>
+          <ToolSelector />
+          <Grid 
+            flexGrow={1} 
+            container 
+            sx={{ 
+              textAlign: "center", 
+              justifyContent: "space-evenly", 
+              alignContent: "center" 
+            }}
+          >
+            <Grid>Wins: {user.wins}</Grid>
+            <Grid>Losses: {user.losses}</Grid>  
+          </Grid>
+        </Grid>
 
         <Grid container sx={{ mt: 1 }}>
           <GameBoard />

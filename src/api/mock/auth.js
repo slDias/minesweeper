@@ -1,5 +1,9 @@
 const userDB = {
-  "admin": "password"
+  admin: { 
+    password: "password",
+    wins: 0,
+    losses: 0
+  }
 }
 
 function fakeAPICall() {
@@ -9,8 +13,10 @@ function fakeAPICall() {
 const mockAPI = {
   async login({ username, password }) {
     await fakeAPICall()
-    if (userDB[username] === password) {
-      return username
+    if (username in userDB && userDB[username].password === password) {
+      let userData = Object.assign({}, userDB[username])
+      userData.password = undefined
+      return userData
     } else {
       throw new Error("Invalid username and/or password")
     }
@@ -19,8 +25,9 @@ const mockAPI = {
     await fakeAPICall()
     if (!username || username in userDB) throw new Error("Invalid username")
     if (!password) throw new Error("Invalid password")
-    userDB[username] = password
-    return { name: username }
+    let userData = {wins: 0, losses: 0}
+    userDB[username] = {password, ...userData}
+    return userData
   }
 }
 
