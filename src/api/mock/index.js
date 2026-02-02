@@ -1,5 +1,6 @@
-import auth from "./auth"
+import auth from "./auth";
+import score from "./score";
 
-const mockAPI = { auth }
+const mockAPI = { auth, score };
 
-export default mockAPI
+export default mockAPI;

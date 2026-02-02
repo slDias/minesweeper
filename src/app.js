@@ -1,18 +1,18 @@
-import { useSelector } from "react-redux"
-import { authSelector } from "./slice/auth"
-import { Box } from "@mui/material"
+import { useSelector } from "react-redux";
+import { userSelector } from "./slice/user";
+import { Box } from "@mui/material";
 
-import GamePlatform from "./pages/game-platform"
-import Login from "./pages/login"
-
+import GamePlatform from "./pages/game-platform";
+import Login from "./pages/login";
 
 const App = () => {
+  const { user } = useSelector(userSelector);
 
-  const { user } = useSelector(authSelector)
+  return (
+    <Box sx={{ width: "100%", height: "100%" }}>
+      {user ? <GamePlatform></GamePlatform> : <Login></Login>}
+    </Box>
+  );
+};
 
-  return <Box sx={{width: "100%", height: "100%"}}>
-    {user ? <GamePlatform></GamePlatform> : <Login></Login>}
-  </Box>
-}
-
-export default App
+export default App;
