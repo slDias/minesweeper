@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const boardLength = 10;
-const bombsCount = 2;
+const bombsCount = 17;
 export const TOOLS = {
   FLAG_BOMB: "TOOL_FLAG_BOMB",
   FLAG_UNKNOWN: "TOOL_FLAG_UNKNOWN",
