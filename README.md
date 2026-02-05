@@ -1,19 +1,6 @@
 # Minesweeper with React and Redux
 
-Hi! 👋
-
-Thanks for checking out my projects!
-
-This is a work in progress. It works already, but I'm adding some features to it before publishing.
-
-So if you want to try it yourself, please clone the repository and run it locally:
-
-```sh
-git clone https://github.com/slDias/minesweeper.git
-cd minesweeper
-npm install
-npm run start
-```
+🕹️ [Play it here](https://sldias.github.io/minesweeper)
 
 ## Motivation
 
