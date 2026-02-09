@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { grey } from "@mui/material/colors";
 import ReplaySharpIcon from "@mui/icons-material/ReplaySharp";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Box, Grid, IconButton, Paper, Typography } from "@mui/material";
+import { Grid, IconButton, Stack, Typography } from "@mui/material";
 
 import { boardSelector, GAME_STATUS, resetGame } from "../slice/game";
 import { userSelector, logout, updateScore } from "../slice/user";
@@ -17,7 +17,9 @@ const GamePlatform = () => {
 
   const GameBoard = () =>
     tileBoard.map((rowOfTiles, y) => (
-      <div key={y}>{<RowOfTiles tileDataList={rowOfTiles} y={y} />}</div>
+      <Grid container overflow={"auto"} columns={10} wrap="nowrap" key={y}>
+        {<RowOfTiles tileDataList={rowOfTiles} y={y} />}
+      </Grid>
     ));
 
   const RowOfTiles = ({ tileDataList, y }) =>
@@ -42,17 +44,14 @@ const GamePlatform = () => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        backgroundColor: grey[100],
-      }}
+    <Grid
+      container
+      justifyContent={"center"}
+      bgcolor={grey[100]}
+      size={{ xs: 12 }}
     >
-      <Paper elevation={3} sx={{ padding: 2 }}>
-        <Grid container sx={{ alignItems: "center", mb: 2 }}>
+      <Grid boxShadow={2} bgcolor={"white"} p={2} size={{ xs: 12 }}>
+        <Grid container size={{ xs: 12 }} sx={{ alignItems: "center", mb: 2 }}>
           <Grid>
             <IconButton onClick={onLogout}>
               <LogoutIcon />
@@ -92,16 +91,24 @@ const GamePlatform = () => {
           </Grid>
         </Grid>
 
-        <Grid container sx={{ mt: 1 }}>
-          <GameBoard />
+        <Grid
+          size={12}
+          container
+          sx={{ mt: 1 }}
+          overflow={"scroll"}
+          justifyContent={"center"}
+        >
+          <Stack>
+            <GameBoard />
+          </Stack>
         </Grid>
 
         <Grid flexGrow={1} sx={{ justifyContent: "space-between" }} container>
           <Grid>User: {user}</Grid>
           <Grid>Moves made: {moves}</Grid>
         </Grid>
-      </Paper>
-    </Box>
+      </Grid>
+    </Grid>
   );
 };
 

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@mui/material/Button";
-import { CircularProgress, Grid, Paper } from "@mui/material";
-import { grey } from "@mui/material/colors";
+import { CircularProgress, Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 
 import UserInput from "../components/user-input";
@@ -41,8 +40,8 @@ const Login = () => {
   const loginForm = (
     <Grid
       container
+      spacing={2}
       direction="column"
-      sx={{ gap: 2 }}
       onKeyDown={handleEnterKeyPress}
     >
       <Grid>
@@ -79,19 +78,16 @@ const Login = () => {
   );
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        backgroundColor: grey[100],
-      }}
-    >
-      <Paper elevation={3} sx={{ padding: 2, width: "30%" }}>
+    <Grid container size={12} alignItems={"center"} justifyContent={"center"}>
+      <Grid
+        boxShadow={1}
+        size={{ xs: 12, sm: 8, md: 6, lg: 4, xl: 3 }}
+        p={2}
+        bgcolor={"white"}
+      >
         {isLoading ? loading : loginForm}
-      </Paper>
-    </Box>
+      </Grid>
+    </Grid>
   );
 };
 
