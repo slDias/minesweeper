@@ -4,9 +4,15 @@
 
 ## How to play
 
-The login page is front-end only, you can use `admin` and `password` to login or use whatever username and password you prefer and then click on Register. \
+The login page is front-end only, you can use the following credentials to log in or use whatever username and password you prefer and then click on Register:
+
+```
+user: admin
+password: password
+```
+
 Users are only used to keep track of wins and losses and it will only keep the data while the tab is open. \
-You can try registering different users and logging in and out to see it in action. \
+You can try registering different users and logging in and out to see it in action.
 
 ## Motivation
 
