@@ -16,11 +16,11 @@ You can try registering different users and logging in and out to see it in acti
 
 ## Motivation
 
-I did this after learning about [Redux](https://redux.js.org/) a few years ago (check commit history). \ 
+I did this after learning about [Redux](https://redux.js.org/) a few years ago (check commit history). \
 At that time, I had already written some React code but mostly to add features or bugfixes to existing projects,
-so I did not had the experience of setting up a React app from zero and I figured it was a good opportunity to do so. \ 
+so I did not had the experience of setting up a React app from zero and I figured it was a good opportunity to do so. \
 Why a minesweeper game? because it is a very reactive thing, meaning that it is the problem that React is suppose to solve 
-and I enviosined it playing nicely with Redux's approach (IMO, it did turn out great). \ 
+and I enviosined it playing nicely with Redux's approach (IMO, it did turn out great). \
 Also because I thought that coming up with the logic behind a minesweeper game would be fun to implement. :)
 
 ## References
