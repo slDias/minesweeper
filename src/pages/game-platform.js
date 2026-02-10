@@ -47,10 +47,16 @@ const GamePlatform = () => {
     <Grid
       container
       justifyContent={"center"}
+      alignItems={"center"}
       bgcolor={grey[100]}
       size={{ xs: 12 }}
     >
-      <Grid boxShadow={2} bgcolor={"white"} p={2} size={{ xs: 12 }}>
+      <Grid
+        boxShadow={2}
+        bgcolor={"white"}
+        p={2}
+        size={{ xs: 12, sm: 10, md: 7, lg: 5 }}
+      >
         <Grid container size={{ xs: 12 }} sx={{ alignItems: "center", mb: 2 }}>
           <Grid>
             <IconButton onClick={onLogout}>
