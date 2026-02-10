@@ -10,8 +10,14 @@ const App = () => {
   const { user } = useSelector(userSelector);
 
   return (
-    <Grid size={12} container bgcolor={grey[200]}>
-      {user ? <GamePlatform></GamePlatform> : <Login></Login>}
+    <Grid
+      size={12}
+      container
+      bgcolor={grey[200]}
+      justifyContent={"center"}
+      alignContent={"center"}
+    >
+      {user ? <GamePlatform /> : <Login />}
     </Grid>
   );
 };

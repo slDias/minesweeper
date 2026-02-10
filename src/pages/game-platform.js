@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { grey } from "@mui/material/colors";
 import ReplaySharpIcon from "@mui/icons-material/ReplaySharp";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Grid, IconButton, Stack, Typography } from "@mui/material";
@@ -48,7 +47,6 @@ const GamePlatform = () => {
       container
       justifyContent={"center"}
       alignItems={"center"}
-      bgcolor={grey[100]}
       size={{ xs: 12 }}
     >
       <Grid

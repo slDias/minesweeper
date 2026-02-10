@@ -1,91 +1,58 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Button from "@mui/material/Button";
-import { CircularProgress, Grid } from "@mui/material";
-import Box from "@mui/material/Box";
+import { Grid, Button } from "@mui/material";
 
-import UserInput from "../components/user-input";
-import PasswordInput from "../components/password-input";
-import { userSelector, login, register } from "../slice/user";
-
-const initialState = {
-  username: "",
-  password: "",
-};
+import { UserInput, PasswordInput } from "../components/input";
+import Loading from "../components/loading";
+import useLogin from "../hooks/useLogin.hook";
 
 const Login = () => {
-  const { isLoading, error } = useSelector(userSelector);
+  const {
+    usernameHook,
+    passwordHook,
+    isLoading,
+    error,
+    loginHandler,
+    registerHandler,
+  } = useLogin();
 
-  const loading = (
+  if (isLoading) return <Loading />;
+
+  return (
     <Grid
+      boxShadow={1}
+      size={{ xs: 12, sm: 8, md: 6, lg: 4, xl: 3 }}
+      px={4}
+      py={2}
+      bgcolor="white"
+      onKeyDown={(e) => e.code === "Enter" && loginHandler()}
       container
+      gap={2}
+      justifyContent="center"
       direction="column"
-      sx={{ padding: 4, alignItems: "center" }}
-    >
-      <Grid>
-        <CircularProgress />
-      </Grid>
-    </Grid>
-  );
-
-  const dispatch = useDispatch();
-  const [payload, setPayload] = useState(initialState);
-  const handleUserChanged = (e) =>
-    setPayload({ ...payload, username: e.target.value });
-  const handlePasswordChanged = (e) =>
-    setPayload({ ...payload, password: e.target.value });
-  const handleEnterKeyPress = (e) =>
-    e.code === "Enter" && dispatch(login(payload));
-
-  const loginForm = (
-    <Grid
-      container
-      spacing={2}
-      direction="column"
-      onKeyDown={handleEnterKeyPress}
     >
       <Grid>
         <h2 align="center">Minesweeper 💣</h2>
       </Grid>
 
       <Grid>
-        <UserInput
-          value={payload.username}
-          onChange={handleUserChanged}
-          focused
-        />
+        <UserInput hook={usernameHook} focused />
       </Grid>
       <Grid>
-        <PasswordInput
-          value={payload.password}
-          onChange={handlePasswordChanged}
-        />
+        <PasswordInput hook={passwordHook} />
       </Grid>
 
-      <Box sx={{ color: "error.main", textAlign: "center" }}>{error}</Box>
+      <Grid color="error.main" textAlign="center">
+        {error}
+      </Grid>
 
-      <Grid container sx={{ justifyContent: "space-between" }}>
+      <Grid container justifyContent="space-between">
         <Grid>
-          <Button onClick={(_) => dispatch(register(payload))}>Register</Button>
+          <Button onClick={(_) => registerHandler()}>Register</Button>
         </Grid>
         <Grid>
-          <Button variant="contained" onClick={(_) => dispatch(login(payload))}>
+          <Button variant="contained" onClick={(_) => loginHandler()}>
             Login
           </Button>
         </Grid>
-      </Grid>
-    </Grid>
-  );
-
-  return (
-    <Grid container size={12} alignItems={"center"} justifyContent={"center"}>
-      <Grid
-        boxShadow={1}
-        size={{ xs: 12, sm: 8, md: 6, lg: 4, xl: 3 }}
-        p={2}
-        bgcolor={"white"}
-      >
-        {isLoading ? loading : loginForm}
       </Grid>
     </Grid>
   );
