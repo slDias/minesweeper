@@ -1,5 +1,5 @@
-import { useUsernameHook, usePasswordHook } from "../components/input";
-import { userSelector, login, register } from "../slice/user";
+import { useUsernameHook, usePasswordHook } from "components/input";
+import { userSelector, login, register } from "slice/user";
 import { useSelector, useDispatch } from "react-redux";
 
 const useLogin = () => {

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { userSelector } from "../slice/user";
+import { userSelector } from "slice/user";
 
 const useUsernameLabel = () => {
   const { user } = useSelector(userSelector);

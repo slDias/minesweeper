@@ -9,4 +9,4 @@ const useTileBoardHook = () => {
   };
 };
 
-export default useTileBoardHook;
+export { useTileBoardHook };

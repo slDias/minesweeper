@@ -1,8 +1,8 @@
 import { Grid, Button } from "@mui/material";
 
-import { UserInput, PasswordInput } from "../components/input";
-import Loading from "../components/loading";
-import useLogin from "../hooks/useLogin.hook";
+import { UserInput, PasswordInput } from "components/input";
+import Loading from "components/loading";
+import useLogin from "hooks/useLogin.hook";
 
 const Login = () => {
   const {

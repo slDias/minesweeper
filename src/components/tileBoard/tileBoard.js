@@ -1,5 +1,5 @@
 import { Grid, Stack } from "@mui/material";
-import Tile from "../tile";
+import Tile from "components/tile";
 
 const TileBoard = ({ hook, ...props }) => {
   return (
@@ -20,4 +20,4 @@ const TileBoard = ({ hook, ...props }) => {
   );
 };
 
-export default TileBoard;
+export { TileBoard };

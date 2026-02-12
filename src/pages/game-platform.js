@@ -1,12 +1,12 @@
 import { Grid } from "@mui/material";
 
-import ToolSelector from "../components/tool-selector";
-import TileBoard from "../components/tileBoard/tileBoard";
-import ResultStats from "../components/result-stats";
-import UsernameLabel from "../components/username-label";
-import MovesCounter from "../components/moves-counter";
-import PlatformHeader from "../components/platform-header";
-import useGamePlatform from "../hooks/useGamePlatform.hook";
+import ToolSelector from "components/tool-selector";
+import { TileBoard } from "components/tileBoard";
+import ResultStats from "components/result-stats";
+import UsernameLabel from "components/username-label";
+import MovesCounter from "components/moves-counter";
+import PlatformHeader from "components/platform-header";
+import useGamePlatform from "hooks/useGamePlatform.hook";
 
 const GamePlatform = () => {
   const {
@@ -14,7 +14,6 @@ const GamePlatform = () => {
     movesCounterHook,
     usernameLabelHook,
     resultStatsHook,
-    headerHook,
   } = useGamePlatform();
 
   return (
@@ -30,7 +29,7 @@ const GamePlatform = () => {
         p={2}
         size={{ xs: 12, sm: 10, md: 7, lg: 5 }}
       >
-        <PlatformHeader hook={headerHook} />
+        <PlatformHeader />
         {/* todo: replace with:
           <Grid>
             <LogoutButton/>
