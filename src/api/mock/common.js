@@ -8,7 +8,7 @@ const common = {
   },
   currentUser: null,
   fakeAPICall: function () {
-    return new Promise((resolve) => setTimeout((_) => resolve(), 1750));
+    return new Promise((resolve) => setTimeout((_) => resolve(), 500));
   },
 };
 

@@ -1,46 +1,21 @@
-import { useDispatch, useSelector } from "react-redux";
-import ReplaySharpIcon from "@mui/icons-material/ReplaySharp";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { Grid, IconButton, Stack, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 
-import { boardSelector, GAME_STATUS, resetGame } from "../slice/game";
-import { userSelector, logout, updateScore } from "../slice/user";
-import Tile from "../components/tile";
 import ToolSelector from "../components/tool-selector";
-import { useEffect } from "react";
+import TileBoard from "../components/tileBoard/tileBoard";
+import ResultStats from "../components/result-stats";
+import UsernameLabel from "../components/username-label";
+import MovesCounter from "../components/moves-counter";
+import PlatformHeader from "../components/platform-header";
+import useGamePlatform from "../hooks/useGamePlatform.hook";
 
 const GamePlatform = () => {
-  const { tileBoard, gameStatus, moves } = useSelector(boardSelector);
-  const { user, wins, losses, isLoading } = useSelector(userSelector);
-  const dispatch = useDispatch();
-
-  const GameBoard = () =>
-    tileBoard.map((rowOfTiles, y) => (
-      <Grid container overflow={"auto"} columns={10} wrap="nowrap" key={y}>
-        {<RowOfTiles tileDataList={rowOfTiles} y={y} />}
-      </Grid>
-    ));
-
-  const RowOfTiles = ({ tileDataList, y }) =>
-    tileDataList.map((tileData, x) => (
-      <Tile tileData={tileData} positionX={x} positionY={y} key={[x, y]} />
-    ));
-
-  useEffect(() => {
-    if (gameStatus !== GAME_STATUS.PLAYING)
-      dispatch(updateScore({ isWin: gameStatus === GAME_STATUS.WIN }));
-  }, [gameStatus, dispatch]);
-
-  const game_status_label = {
-    [GAME_STATUS.PLAYING]: "Make your next move.",
-    [GAME_STATUS.WIN]: "You win!",
-    [GAME_STATUS.LOSS]: "You lose.",
-  };
-
-  const onLogout = () => {
-    dispatch(resetGame());
-    dispatch(logout());
-  };
+  const {
+    tileBoardHook,
+    movesCounterHook,
+    usernameLabelHook,
+    resultStatsHook,
+    headerHook,
+  } = useGamePlatform();
 
   return (
     <Grid
@@ -55,44 +30,17 @@ const GamePlatform = () => {
         p={2}
         size={{ xs: 12, sm: 10, md: 7, lg: 5 }}
       >
-        <Grid container size={{ xs: 12 }} sx={{ alignItems: "center", mb: 2 }}>
+        <PlatformHeader hook={headerHook} />
+        {/* todo: replace with:
           <Grid>
-            <IconButton onClick={onLogout}>
-              <LogoutIcon />
-            </IconButton>
-          </Grid>
-          <Grid flexGrow={1} sx={{ verticalAlign: "center" }}>
-            <Typography variant="h5" component="div" align="center">
-              {game_status_label[gameStatus]}
-            </Typography>
-          </Grid>
-          <Grid>
-            <IconButton onClick={() => dispatch(resetGame())} component="span">
-              <ReplaySharpIcon />
-            </IconButton>
-          </Grid>
-        </Grid>
+            <LogoutButton/>
+            <GameStatusLabel/>
+            <ResetGameButton/>
+          </Grid>*/}
 
         <Grid container>
           <ToolSelector />
-          <Grid
-            flexGrow={1}
-            container
-            sx={{
-              textAlign: "center",
-              justifyContent: "space-evenly",
-              alignContent: "center",
-            }}
-          >
-            {isLoading ? (
-              "saving..."
-            ) : (
-              <>
-                <Grid>Wins: {wins}</Grid>
-                <Grid>Losses: {losses}</Grid>
-              </>
-            )}
-          </Grid>
+          <ResultStats hook={resultStatsHook} />
         </Grid>
 
         <Grid
@@ -102,14 +50,12 @@ const GamePlatform = () => {
           overflow={"scroll"}
           justifyContent={"center"}
         >
-          <Stack>
-            <GameBoard />
-          </Stack>
+          <TileBoard hook={tileBoardHook} />
         </Grid>
 
         <Grid flexGrow={1} sx={{ justifyContent: "space-between" }} container>
-          <Grid>User: {user}</Grid>
-          <Grid>Moves made: {moves}</Grid>
+          <UsernameLabel hook={usernameLabelHook} />
+          <MovesCounter hook={movesCounterHook} />
         </Grid>
       </Grid>
     </Grid>
