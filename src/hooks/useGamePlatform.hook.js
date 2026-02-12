@@ -3,7 +3,6 @@ import { boardSelector, GAME_STATUS } from "../slice/game";
 import { updateScore } from "../slice/user";
 import { useEffect } from "react";
 import useTileBoardHook from "../components/tileBoard/useTileBoard.hook";
-import usePlatformHeader from "../components/platform-header.hook";
 import useResultStats from "../components/result-stats.hook";
 import useUsernameLabel from "../components/username-label.hook";
 import useMovesCounter from "../components/moves-counter.hook";
@@ -11,7 +10,6 @@ import useMovesCounter from "../components/moves-counter.hook";
 const useGamePlatform = () => {
   const resultStatsHook = useResultStats();
   const tileBoardHook = useTileBoardHook();
-  const headerHook = usePlatformHeader();
   const usernameLabelHook = useUsernameLabel();
   const movesCounterHook = useMovesCounter();
 
@@ -29,7 +27,6 @@ const useGamePlatform = () => {
     movesCounterHook,
     usernameLabelHook,
     resultStatsHook,
-    headerHook,
   };
 };
 

@@ -14,7 +14,6 @@ const GamePlatform = () => {
     movesCounterHook,
     usernameLabelHook,
     resultStatsHook,
-    headerHook,
   } = useGamePlatform();
 
   return (
@@ -30,7 +29,7 @@ const GamePlatform = () => {
         p={2}
         size={{ xs: 12, sm: 10, md: 7, lg: 5 }}
       >
-        <PlatformHeader hook={headerHook} />
+        <PlatformHeader />
         {/* todo: replace with:
           <Grid>
             <LogoutButton/>
