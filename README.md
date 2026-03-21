@@ -1,6 +1,6 @@
 # Minesweeper with React and Redux
 
-- 🕹️ [Play it here](https://sldias.github.io/minesweeper)
+- 🕹️ [Play it here](https://sldias.github.io/minesweeper){:target="_blank"}
 
 ## How to play
 
